@@ -3,7 +3,7 @@
 This control is displays a map (or any other svg file) and colorizes it's content. In the case of a map you would
 like to colorize the countries according to values in the bound datasource / datamodel.  
 To give an idea of what you can expect have a look at the following graphic.  
-![example svg map](./docu/images/examplemap.png)
+![example svg map](./readmefiles/images/examplemap.png)
 
 In this graphic some countries are colorized. The colors are selected from a color palette during runtime.
 
@@ -61,7 +61,7 @@ Insert the namespace for the control. This is always
 
 ### 2>
 Add the control to the page or any control. The name of the control in `Map`. The properties are described in detail in the API help (TBD).  
-The most important properties are listed here:   
+The most important properties are listed here:    
 * `data`: This defines the binding to the entityset of the model the control is using.
 The controls entityset has to have at least three properties.
 	* `codePropertyName`: This is the technical property that is used for resolving the DOM node in the SVG file. For each entity of the entityset the value of this property is used to retrieve the according DOM node.  
