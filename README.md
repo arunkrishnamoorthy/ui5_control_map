@@ -106,5 +106,6 @@ To install the control follow these instructions.
 * Register a module path for the Map control in the `init` method of your `Component.js` file.
 ```
 // Register the module path for the svg control
-jQuery.sap.registerModulePath("de.tammenit.controls.svg", "../controls/svg/");
+var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
+jQuery.sap.registerModulePath("de.tammenit.controls.svg", modulePath + "/controls/svg");
 ```
