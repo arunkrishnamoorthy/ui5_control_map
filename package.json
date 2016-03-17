@@ -1,0 +1,16 @@
+{
+  "name": "ui5_control_map",
+  "version": "0.8.0",
+  "description": "A UI5 control for displaying colorized maps",
+  "scripts": {
+    "jsdoc": "jsdoc -r -t ./node_modules/ink-docstrap/template -d ./control/docu/api/ ./control/**.js README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/htammen/ui5_control_map"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ink-docstrap": "^1.1.4"
+  }
+}

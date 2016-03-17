@@ -1,26 +1,39 @@
+/**
+ * @fileOverview This module contains classes available for using svg graphics.
+ * @module de/tammenit/controls/svg
+ * @author Helmut Tammen <h.tammen@tammen-it-solutions.de>
+ * @version 0.8.0
+ */
 sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function(Control, d3) {
 
 	/**
-	 * Constructor
-	 *
-	 */
-	return Control.extend("de.tammenit.controls.svg.Map", (function() {
+   * The control class Map displays a Map or any other graphic and colorizes its countries according to a
+   * value in a dataset
+	 * @alias Map
+	 * @class Map
+	 * @constructor
+   */
+	var control = Control.extend("de.tammenit.controls.svg.Map", (function() {
+		/** @lends Map.prototype */
 		var that;
 
 		/**
 		 * Provides the properties and events of the control DataTile
+		 * @alias Map#getMetadata
+		 * @function
 		 */
 		function getMetadata() {
 			return {
+				/** @lends Map.prototype */
 				properties: {
-					/** Title that is displayed with an <h2> tag above the SVG graphic.
+					/** Title that is displayed with an \<h2\> tag above the SVG graphic.
 					 * Leave blank to disable
 					 */
 					"title": {
 						type: "string",
 						defaultValue: ""
 					},
-					/** Subtitle. Displayed with an <h3> tag under the title.
+					/** Subtitle. Displayed with an \<h3\> tag under the title.
 					 * Leave blank to disable
 					 */
 					"subTitle": {
@@ -74,10 +87,10 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 					 * For each entity of the entityset the value of this property is used to retrieve the according DOM node.
 					 * e.g.:
 					 * <pre><code>
-					 *	<path
-					 *		id="gb"
-					 *		class="eu europe"
-					 *		d="M 203.55368,395.07058 C 205.23859,396.38106 206.64268,397.12991 206.45547,383.27618 z "/>
+					 * &lt;path
+					 *   id="gb"
+					 *   class="eu europe"
+					 *   d="M 203.55368,395.07058 C 205.23859,396.38106 206.64268,397.12991 206.45547,383.27618 z "/&gt;
 					 * </code></pre>
 					 * In this example the id of the SVG path is `gb` (for Great Britain).
 					 * In you entityset there must be an entity which `codePropertyName` value is also `gb`.
@@ -113,13 +126,13 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 					}
 				},
 				aggregations: {
-					// html-control as container for the SVG control
+					/** html-control as container for the SVG control */
 					_html: {
 						type: "sap.ui.core.HTML",
 						multiple: false,
 						visibility: "hidden"
 					},
-					// data aggregation storing the data-binding of this control
+					/** data aggregation storing the data-binding of this control */
 					data: {
 						type: "sap.ui.core.Element"
 					}
@@ -140,6 +153,8 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 		/**
 		 * Renders the control based on the properties.
 		 *
+		 * @alias Map#renderer
+		 * @function
 		 * @param oRm
 		 * @param oControl
 		 */
@@ -167,6 +182,8 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 
 		/**
 		 * Renders the SVG. Read here https://bost.ocks.org/mike/bar/3/ to understand what happens here
+		 * @alias Map#_renderSVG
+		 * @function
 		 */
 		function _renderSVG() {
 			var range = this.colorTheme[9];
@@ -206,6 +223,11 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 			}.bind(this));
 		}
 
+		/**
+		 * is called after rendering has been finished
+		 * @alias Map#onAfterRendering
+		 * @function
+		 */
 		function onAfterRendering() {
 
 			// if no svg-element currently exists we load the svg from a file and
@@ -240,6 +262,8 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 		/**
 		 * Sets the height of the control to the height of the window - 250.
 		 * The new height is set at the #plantViewContainer div element that wraps the svg graphic
+		 * @alias Map#_setControlHeight
+		 * @function
 		 * @private
 		 */
 		function _setControlHeight() {
@@ -255,4 +279,5 @@ sap.ui.define(["sap/ui/layout/VerticalLayout", "sap/ui/thirdparty/d3"], function
 			onAfterRendering: onAfterRendering
 		};
 	}()));
+	return control;
 }, true);

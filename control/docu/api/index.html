@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-de_tammenit_controls_svg.html">de/tammenit/controls/svg</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Map.html">Map</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>UI5 Map Control</h1><h2>Introduction</h2><p>This control is displays a map (or any other svg file) and colorizes it's content. In the case of a map you would
+like to colorize the countries according to values in the bound datasource / datamodel.<br>To give an idea of what you can expect have a look at the following graphic.<br><img src="./readmefiles/images/examplemap.png" alt="example svg map"></p>
+<p>In this graphic some countries are colorized. The colors are selected from a color palette during runtime.</p>
+<h2>Usage</h2><p>The following code snippet shows you how to use this control in your applications. I marked the interesting lines with a greater sign.</p>
+<pre class="prettyprint source"><code>&lt;mvc:View
+    controllerName=&quot;de.tammenit.svg.ui5con.controller.Object&quot;
+    xmlns=&quot;sap.m&quot;
+    xmlns:mvc=&quot;sap.ui.core.mvc&quot;
+    xmlns:semantic=&quot;sap.m.semantic&quot;
+1>    xmlns:em=&quot;de.tammenit.controls.svg&quot;
+    xmlns:core=&quot;sap.ui.core&quot;
+    xmlns:app=&quot;http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1&quot;
+    xmlns:footerbar=&quot;sap.ushell.ui.footerbar&quot;>
+
+    &lt;semantic:FullscreenPage
+        id=&quot;page&quot;
+        navButtonPress=&quot;onNavBack&quot;
+        showNavButton=&quot;true&quot;
+        title=&quot;{i18n>objectTitle}&quot;
+        busy=&quot;{objectView>/busy}&quot;
+        busyIndicatorDelay=&quot;{objectView>/delay}&quot;>
+
+        &lt;semantic:content>
+2>            &lt;em:Map id=&quot;euromap&quot;
+                title=&quot;Euromap&quot;
+                subTitle=&quot;UI5Con&quot;
+                colorpalette=&quot;Oranges&quot;
+                colorChangeValues=&quot;0, 1, 2, 3, 5, 10, 20, 50&quot;
+                svgFileName=&quot;svg/europemap.svg&quot;
+                codePropertyName=&quot;code&quot;
+                quantityPropertyName=&quot;quantity&quot;
+                descriptionPropertyName=&quot;name&quot;
+                standardFillColor=&quot;#CDCDCD&quot;
+                tooltipText1=&quot;&quot;
+                tooltipText2=&quot; people from &quot;
+                tooltipText3=&quot; are with us.&quot;
+                data=&quot;{path: '/Attendees'}&quot;
+            >
+3>                &lt;em:data>
+                    &lt;core:Element>&lt;/core:Element>
+                &lt;/em:data>
+            &lt;/em:Map>
+         &lt;/semantic:content>
+
+    &lt;/semantic:FullscreenPage>
+
+&lt;/mvc:View></code></pre><h3>1&gt;</h3><p>Insert the namespace for the control. This is always<br><code>de.tammenit.controls.svg</code>  </p>
+<h3>2&gt;</h3><p>Add the control to the page or any control. The name of the control in <code>Map</code>. The properties are described in detail in the API help (TBD).<br>The most important properties are listed here:    </p>
+<ul>
+<li><code>data</code>: This defines the binding to the entityset of the model the control is using.
+The controls entityset has to have at least three properties.<ul>
+<li><code>codePropertyName</code>: This is the technical property that is used for resolving the DOM node in the SVG file. For each entity of the entityset the value of this property is used to retrieve the according DOM node.<br>e.g.:  <pre class="prettyprint source"><code>&lt;path
+   id=&quot;gb&quot;
+   class=&quot;eu europe&quot;
+   d=&quot;M 203.55368,395.07058 C 205.23859,396.38106 206.64268,397.12991 206.45547,383.27618 z &quot;/></code></pre>In this example the id of the SVG path is <code>gb</code> (for Great Britain). In you entityset there must be an entity which <code>codePropertyName</code> value is also <code>gb</code>.</li>
+<li><code>quantityPropertyName</code>: This is a numeric quantity value that is used for colorizing the svg path that was found for the <code>codePropertyName</code> value. The higher the value the darker the color of this path.</li>
+<li><code>descriptionPropertyName</code>: This value is used for generating a tooltip for the svg path.</li>
+</ul>
+</li>
+<li><code>colorpalette</code>: This property defines the color palette from the <code>colorbrewer.js</code> file that is used. Have a look into the file to see which palettes are available.</li>
+<li><code>colorChangeValues</code>: This property defines at which value of <code>quantityPropertyName</code> the color changes to the next value of the <code>colorpalette</code>.</li>
+<li><code>svgFileName</code>: This property defines the name of the SVG file. You can use any SVG file you like with this control, even files that don't display a map. It's only important that the file contains <code>ìd</code>s that match to the entities in the entityset.</li>
+<li><code>other properties</code>: These properties are described later.</li>
+</ul>
+<h3>3&gt;</h3><p>For the <code>data</code> property a <code>&lt;data&gt;</code> tag as child of the control must be defined. This acts as template for the aggregation <code>data</code>.<br>The template control can be a <code>&lt;core:Element&gt;</code> and is allowed to be empty cause it is not really used by the control itself. UI5 just requires a template for aggregation binding.</p>
+<h2>Installation</h2><p>To install the control follow these instructions.  </p>
+<ul>
+<li>Copy the file <code>Map.js</code> into any folder of your UI5 project, e.g. <code>webapps/controls/svg</code></li>
+<li>Copy the file <code>svg/europemap.svg</code> into any folder under <code>webapps</code>, e.g. <code>webapps/svg</code></li>
+<li>Copy the file <code>colorbrewer.js</code> into any folder under <code>webapps</code>, e.g. <code>webapps/js</code></li>
+<li>Add the <code>colorbrewer.js</code> to the resources of your projects <code>manifest.json</code><pre class="prettyprint source"><code>&quot;sap.ui5&quot;: {
+  ...
+  ...
+  &quot;resources&quot;: {
+      &quot;js&quot;: [
+          {
+              &quot;uri&quot;: &quot;js/colorbrewer.js&quot;
+          }
+      ]
+  },</code></pre></li>
+<li>Register a module path for the Map control in the <code>init</code> method of your <code>Component.js</code> file.<pre class="prettyprint source"><code>// Register the module path for the svg control
+var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
+jQuery.sap.registerModulePath(&quot;de.tammenit.controls.svg&quot;, modulePath + &quot;/controls/svg&quot;);</code></pre></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	
+		on 2016-03-17T23:56:23+01:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
+
+</body>
+</html>
