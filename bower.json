@@ -1,5 +1,5 @@
 {
-  "name": "ui5_control_map",
+  "name": "ui5-ctrl-svg-map",
   "description": "A UI5 control for displaying colorized maps",
   "main": "control/Map.js",
   "authors": [

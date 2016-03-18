@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "bower": "^1.7.7",
     "ink-docstrap": "^1.1.4",
     "jsdoc": "^3.4.0"
   }

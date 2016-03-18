@@ -30,9 +30,9 @@ To develop or maintain this control you should at first clone the git repository
 ```
 git clone https://github.com/htammen/ui5_control_map.git
 ```
-Then nothing more than an editor is necessary. But developers life is much easier with some node.js tools. Therefore we recommend to [install node.js](https://nodejs.org/en/download/package-manager/). The following sections assume that you have installed node.js on your local system.  
+Then nothing more than an editor is necessary. But developers life is much easier with some node.js tools. Therefore we recommend to [install node.js](https://nodejs.org/en/download/package-manager/) (if you are a web developer you already did some years ago ;-) ). The following sections assume that you have installed node.js on your local system.  
 
-After you installed node.js change to the project directory and run npm install.
+After you installed node.js move to the project directory and run npm install.
 ```
 cd ui5_control_map
 npm install
@@ -40,8 +40,9 @@ npm install
 This downloads all devDependencies defined in the package.json file from the npm repository. At the moment these are
 * jsdoc - Tool to generate API documentation
 * docstrap - nice template for jsdoc
+* bower - for managing your control
 
-After you've done this you can start developing. As mentioned above all the src files are located in the folder 'control'.
+After you've done this you can start developing. As mentioned above all the source files are located in the folder 'control'.
 
 ## Documentation
 We have two types of documentation
@@ -58,5 +59,42 @@ on the command line of the projects root folder.
 
 
 ## Publishing
-Publishing will be done with [Bower](http://bower.io).  
-Documentation has to be done.
+Publishing the control into a public repository is done with [Bower](http://bower.io).  
+Bower is a widely spread component management system that allows developers to easily find and import components into their projects.
+The sourcecode of the projects is still on Github or whatever repository you choose. Bower just has a directory of components and allows
+to install and manage them.   
+All Bower components are installed into a directory called `bower_components`. Under this folder you find all your installed bower_components /
+community UI5 controls.  
+
+This control is already registered under the name `ui5-ctrl-svg-map`.  
+Entering `bower info ui5-ctrl-svg-map` at the command line gives you this or similar output.
+```
+{
+  name: 'ui5-ctrl-svg-map',
+  homepage: 'https://github.com/htammen/ui5_control_map',
+  version: '0.8.0'
+}
+
+Available versions:
+  - 0.8.2
+  - 0.8.1
+  - 0.8.0
+```
+Your users can now use the control in different versions.  
+
+### Component Naming Conventions
+Bower does not have a namespace support yet. Therefore it is usual practice that components use a dash - seperated naming to differ from each other and to build a sort of hierachy.  
+For the UI5 controls it is recommended to use this naming convention.  
+`ui5-ctrl-<area>-<subarea>-<subarea-2>-...<ctrl name>`  
+Explanation:  
+* `ui5`: a fix value for all UI5 bower components
+* `ctrl`: a fix value for UI5 controls. There may be other artefacts in the future.
+* `<area>`: an area chosen by the developer to make clear which type of control this is.
+* `<subarea>..<subarea-N>`: subareas, it's up to the developers preference to use them
+* `<ctrl-name>`: name of the control.
+
+This control is named `ui5-ctrl-svg-map` which means:  
+* `ui5`: fix
+* `ctrl`: fix
+* `svg`: control belongs to the area SVG
+* `map`: the control is named map.
