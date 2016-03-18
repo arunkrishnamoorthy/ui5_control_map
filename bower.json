@@ -1,0 +1,26 @@
+{
+  "name": "ui5_control_map",
+  "description": "A UI5 control for displaying colorized maps",
+  "main": "control/Map.js",
+  "authors": [
+    "Helmut Tammen <h.tammen@tammen-it-solutions.de>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sap",
+    "ui5",
+    "svg",
+    "graphic"
+  ],
+  "moduleType": ["amd"],
+  "homepage": "https://github.com/htammen/ui5_control_map",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo",
+    "jaguarjs-jsdoc"
+  ]
+}
