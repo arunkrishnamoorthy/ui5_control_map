@@ -108,7 +108,16 @@ This control is registered at Bower. Bower is a component management system that
 			]
 		},
 	```
-* Register a module path for the Map control in the `init` method of your `Component.js` file.
+* Register a module path for the Map control to the resourceroots section of you manifest.json file.
+	```
+	"sap.ui5": {
+		...
+		"resourceRoots": {
+			"de.tammenit.controls.svg": "bower_components/ui5-ctrl-svg-map/control"
+		},
+	```
+
+Alternatively you can register the modulepath in the `init` method of your `Component.js` file.
 	```
 	// Register the module path for the svg control
 	var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
