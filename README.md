@@ -96,6 +96,7 @@ This control is registered at Bower. Bower is a component management system that
 	* copy the file `bower_components/ui5-ctrl-svg-map/control/svg/europemap.svg` into any folder under `webapps`, e.g. `webapps/svg`
 	* or leave the file where it is and change the setting of the control property `svgFileName`(see above).
 * Add the `colorbrewer.js` to the resources of your projects `manifest.json`
+
 	```
 	"sap.ui5": {
 		...
@@ -109,6 +110,7 @@ This control is registered at Bower. Bower is a component management system that
 		},
 	```
 * Register a module path for the Map control to the resourceroots section of you manifest.json file.
+
 	```
 	"sap.ui5": {
 		...
@@ -116,8 +118,9 @@ This control is registered at Bower. Bower is a component management system that
 			"de.tammenit.controls.svg": "bower_components/ui5-ctrl-svg-map/control"
 		},
 	```
+	
+	Alternatively you can register the modulepath in the `init` method of your `Component.js` file.
 
-Alternatively you can register the modulepath in the `init` method of your `Component.js` file.
 	```
 	// Register the module path for the svg control
 	var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
@@ -151,9 +154,20 @@ When using the manual Installation you have to process the following steps.
 		]
 	},
 ```
-* Register a module path for the Map control in the `init` method of your `Component.js` file.
-```
-// Register the module path for the svg control
-var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
-jQuery.sap.registerModulePath("de.tammenit.controls.svg", modulePath + "/controls/svg");
-```
+* Register a module path for the Map control to the resourceroots section of you manifest.json file.
+
+	```
+	"sap.ui5": {
+		...
+		"resourceRoots": {
+			"de.tammenit.controls.svg": "bower_components/ui5-ctrl-svg-map/control"
+		},
+	```
+	
+	Alternatively you can register the modulepath in the `init` method of your `Component.js` file.
+
+	```
+	// Register the module path for the svg control
+	var modulePath = jQuery.sap.getModulePath(this.getManifestObject().getComponentName());
+	jQuery.sap.registerModulePath("de.tammenit.controls.svg", modulePath + "/bower_components/ui5-ctrl-svg-map/control");
+	```
